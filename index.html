@@ -188,30 +188,80 @@ body{background:var(--ivory);color:var(--dark);font-family:var(--sans);font-weig
 
 /* ── MOBILE ── */
 @media(max-width:768px){
-  html,body{overflow:auto}
-  .shell{grid-template-columns:1fr;grid-template-rows:auto auto 1fr;height:auto;overflow:auto}
-  .sidebar{display:none;position:fixed;top:60px;left:0;bottom:0;width:240px;z-index:50;overflow-y:auto}
+  /* Unlock scroll on mobile */
+  html,body{height:auto;overflow:auto}
+
+  /* Shell becomes simple vertical stack */
+  .shell{display:block;height:auto;min-height:100vh}
+
+  /* Topbar */
+  .topbar{padding:0 20px;position:sticky;top:0;z-index:100}
+  .mob-menu-btn{display:block}
+
+  /* Sidebar: hidden by default, slides in as overlay */
+  .sidebar{
+    display:none;
+    position:fixed;top:60px;left:0;bottom:0;
+    width:80%;max-width:280px;
+    z-index:90;overflow-y:auto;
+    box-shadow:4px 0 24px rgba(42,31,26,.15)
+  }
   .sidebar.mob-open{display:flex}
-  .content{overflow-y:visible;height:auto}
-  .page{padding:24px 20px;display:none}
+
+  /* Content area fills screen */
+  .content{height:auto;overflow:visible}
+
+  /* Pages: full scroll, comfortable padding */
+  .page{padding:20px 16px 40px;display:none}
   .page.active{display:block}
-  .blog-reader{padding:24px 20px}
-  .home-hero{grid-template-columns:1fr}
+
+  /* Blog reader */
+  .blog-reader{padding:20px 16px 40px}
+  .blog-hero-img{height:200px;margin:-20px -16px 28px;width:calc(100% + 32px)}
+
+  /* Hero */
+  .home-hero{grid-template-columns:1fr;gap:20px}
   .home-hero-img{display:none}
-  .quick-nav{grid-template-columns:repeat(2,1fr)}
+  .home-hero-text h1{font-size:36px}
+
+  /* Quick nav 2 cols */
+  .quick-nav{grid-template-columns:repeat(2,1fr);gap:10px}
+  .qn-card{padding:16px 12px}
+
+  /* Home blog preview */
+  #home-blog-cards{grid-template-columns:1fr!important}
+
+  /* Products 2 cols */
   .prod-grid{grid-template-columns:repeat(2,1fr);gap:10px}
-  .name-highlight{grid-column:span 2}
+  .prod-info{padding:12px 14px}
+  .prod-name{font-size:15px}
+
+  /* Custom */
   .custom-grid{grid-template-columns:1fr}
   .custom-img{display:none}
+
+  /* Story */
   .story-layout{grid-template-columns:1fr}
   .story-img{display:none}
+  .story-children{grid-template-columns:1fr 1fr}
+
+  /* Blog */
   .blog-grid{grid-template-columns:1fr}
-  .abo-layout{grid-template-columns:1fr}
+
+  /* Abo */
+  .abo-layout{grid-template-columns:1fr;gap:24px}
   .abo-form{flex-direction:column}
-  .abo-input{border-right:1px solid var(--border)}
+  .abo-input{border-right:1px solid var(--border);margin-bottom:0}
+
+  /* Cart */
   .cart-layout{grid-template-columns:1fr}
-  .mob-menu-btn{display:block}
-  .topbar{padding:0 20px}
+
+  /* Kurse */
+  #kurs-grid{grid-template-columns:1fr!important}
+
+  /* Misc */
+  .page-head{margin-bottom:24px;padding-bottom:16px}
+  .page-title{font-size:28px}
 }
 </style>
 </head>
@@ -644,8 +694,9 @@ function showPage(id){
   document.querySelector(`[data-page="${id}"]`)?.classList.add('active');
   // close blog reader when switching pages
   closeBlogReader();
-  // scroll to top
+  // scroll to top (works on both desktop sidebar and mobile)
   document.getElementById('content').scrollTop=0;
+  window.scrollTo(0,0);
   // close mobile sidebar
   document.getElementById('sidebar').classList.remove('mob-open');
 }
