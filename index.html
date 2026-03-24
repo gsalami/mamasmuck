@@ -244,6 +244,7 @@ body{background:var(--ivory);color:var(--dark);font-family:var(--sans);font-weig
   <div class="sidebar-section" data-i="nav_sec_joia">JOIA</div>
   <div class="nav-item" onclick="showPage('story')" data-page="story"><span class="nav-icon">&#9673;</span><span data-i="nav_story">Über Jessica</span></div>
   <div class="nav-item" onclick="showPage('blog')" data-page="blog"><span class="nav-icon">&#9672;</span><span data-i="nav_blog">Journal</span></div>
+  <div class="nav-item" onclick="showPage('kurse')" data-page="kurse"><span class="nav-icon">&#9678;</span><span data-i="nav_kurse">Kurse</span></div>
   <div class="nav-item" onclick="showPage('abo')" data-page="abo"><span class="nav-icon">&#9676;</span><span data-i="nav_abo">Mama-Tipps Abo</span></div>
 
   <div class="sidebar-footer">
@@ -456,6 +457,75 @@ body{background:var(--ivory);color:var(--dark);font-family:var(--sans);font-weig
     </div>
   </div>
 
+  <!-- KURSE -->
+  <div class="page" id="page-kurse">
+    <div class="page-head">
+      <p class="page-eyebrow" data-i="kurse_eyebrow">Kreativ-Workshops</p>
+      <h2 class="page-title" data-i="kurse_title">Krälleli-Kurse <em>mit Jessica</em></h2>
+      <p class="page-sub" data-i="kurse_sub">Lerne das Fädeln von Grund auf — in kleiner Gruppe, mit allem Material. Du nimmst dein selbst gemachtes Stück mit nach Hause.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px" id="kurs-grid">
+      <div class="prod-card">
+        <div class="prod-img" style="aspect-ratio:16/9">
+          <img src="https://images.unsplash.com/photo-1524117074681-31bd4de22ad3?w=600&q=80&fit=crop" alt="Einsteiger-Workshop" loading="lazy" style="aspect-ratio:16/9;width:100%;object-fit:cover;filter:brightness(.85) saturate(.85)"/>
+          <span class="prod-pill" data-i="kurs1_tag">Einsteiger</span>
+        </div>
+        <div class="prod-info">
+          <p class="prod-name" data-i="kurs1_name">Mein erstes Krälleli</p>
+          <p class="prod-sub" data-i="kurs1_detail">2h · Max. 6 Personen · Material inklusive</p>
+          <p class="prod-price">CHF 65</p>
+          <p style="font-size:12px;color:var(--stone);margin-top:8px;line-height:1.7" data-i="kurs1_desc">Für absolute Anfängerinnen — du lernst Fädeln, Knoten und Verschlüsse. Am Ende hast du dein eigenes Ketteli.</p>
+          <button class="btn-dark" style="margin-top:16px;font-size:10px;padding:10px 24px" onclick="bookCourse('Mein erstes Krälleli')" data-i="kurs_btn">Platz buchen</button>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img" style="aspect-ratio:16/9">
+          <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600&q=80&fit=crop" alt="Namens-Workshop" loading="lazy" style="aspect-ratio:16/9;width:100%;object-fit:cover;filter:brightness(.85) saturate(.85)"/>
+          <span class="prod-pill" data-i="kurs2_tag">Signature</span>
+        </div>
+        <div class="prod-info">
+          <p class="prod-name" data-i="kurs2_name">Namens-Armbändeli</p>
+          <p class="prod-sub" data-i="kurs2_detail">2.5h · Max. 6 Personen · Material inklusive</p>
+          <p class="prod-price">CHF 75</p>
+          <p style="font-size:12px;color:var(--stone);margin-top:8px;line-height:1.7" data-i="kurs2_desc">Du gestaltest dein eigenes Namens-Armbändeli — mit Buchstabenperlen, Goldperlen und deiner Wunschfarbe.</p>
+          <button class="btn-dark" style="margin-top:16px;font-size:10px;padding:10px 24px" onclick="bookCourse('Namens-Armbändeli')" data-i="kurs_btn">Platz buchen</button>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img" style="aspect-ratio:16/9">
+          <img src="https://images.unsplash.com/photo-1536640712-4d4c36ff0e4e?w=600&q=80&fit=crop" alt="Mama & Kind Kurs" loading="lazy" style="aspect-ratio:16/9;width:100%;object-fit:cover;filter:brightness(.85) saturate(.85)"/>
+          <span class="prod-pill" data-i="kurs3_tag">Mama & Kind</span>
+        </div>
+        <div class="prod-info">
+          <p class="prod-name" data-i="kurs3_name">Mama & Kind Workshop</p>
+          <p class="prod-sub" data-i="kurs3_detail">2h · Ab 6 Jahren · Duo-Preis</p>
+          <p class="prod-price">CHF 95 <span style="font-size:11px;color:var(--stone)">/ Paar</span></p>
+          <p style="font-size:12px;color:var(--stone);margin-top:8px;line-height:1.7" data-i="kurs3_desc">Mama und Kind fädeln gemeinsam ein passendes Set. Ein unvergesslicher Moment — und ein Stück das ihr beide tragt.</p>
+          <button class="btn-dark" style="margin-top:16px;font-size:10px;padding:10px 24px" onclick="bookCourse('Mama & Kind Workshop')" data-i="kurs_btn">Platz buchen</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOOKING FORM -->
+    <div style="background:var(--nude);padding:32px;border:1px solid var(--border)" id="kurs-form-wrap" style="display:none">
+      <p class="page-eyebrow" data-i="kurs_form_eyebrow">Kursanmeldung</p>
+      <h3 style="font-family:var(--serif);font-size:22px;color:var(--dark);margin:10px 0 24px" id="kurs-form-title">Workshop buchen</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div><label class="f-label" data-i="kurs_fname">Vorname</label><input class="f-input" id="kf-fname" type="text" placeholder="Marie"/></div>
+        <div><label class="f-label" data-i="kurs_lname">Nachname</label><input class="f-input" id="kf-lname" type="text" placeholder="Müller"/></div>
+        <div><label class="f-label" data-i="kurs_email">E-Mail</label><input class="f-input" id="kf-email" type="email" placeholder="marie@example.com"/></div>
+        <div><label class="f-label" data-i="kurs_persons">Personen</label>
+          <select class="f-input" id="kf-persons"><option>1 Person</option><option>2 Personen</option><option>3 Personen</option></select></div>
+        <div style="grid-column:span 2"><label class="f-label" data-i="kurs_note">Notiz</label><input class="f-input" id="kf-note" placeholder="Allergien, Fragen…"/></div>
+      </div>
+      <div style="display:flex;gap:12px;margin-top:20px;align-items:center">
+        <button class="btn-dark" onclick="submitCourse()" data-i="kurs_submit">Anmeldung bestätigen</button>
+        <button class="btn-light" onclick="document.getElementById('kurs-form-wrap').style.display='none'" data-i="kurs_cancel">Abbrechen</button>
+      </div>
+    </div>
+  </div>
+
   <!-- TASCHE -->
   <div class="page" id="page-tasche">
     <div class="page-head">
@@ -621,6 +691,57 @@ const blogs=[
    <h4>Separat aufbewahren</h4><p>In einer kleinen Leinenbox aufbewahren — so verhindert man Verknoten und Kratzer.</p>
    <blockquote>"Schönheit braucht Aufmerksamkeit — auch wenn es nur ein Ketteli ist."</blockquote>
    <h4>Reinigen mit mildem Tuch</h4><p>Ein weiches, trockenes Tuch reicht. Keine Chemie. <strong>Sanft behandeln</strong> — dann bleibt der Glanz.</p>`},
+  {cat:'Kinder-Tipps',title:'Grenzen setzen ohne Machtkampf — was wirklich hilft',meta:'Von Jessica · März 2026',img:'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=900&q=80&fit=crop',
+   body:`<p>Jede Mama kennt es — du sagst Nein, und kurz darauf liegt dein Kind auf dem Boden und schreit. Was nun? Ich habe viel ausprobiert. Das hier hilft mir mit Liano.</p>
+   <h4>Nein bedeutet Nein — aber wie du es sagst, zählt</h4>
+   <p>Kinder testen Grenzen, weil das ihr Job ist. Sie lernen die Welt kennen. Ein ruhiges, klares Nein ist wirksamer als ein lautes. <strong>Auf Augenhöhe gehen, kurz erklären, konsequent bleiben.</strong></p>
+   <blockquote>"Konsequenz ist keine Strafe — sie ist Sicherheit für dein Kind."</blockquote>
+   <h4>Wahlmöglichkeiten geben</h4>
+   <p>Statt «Du räumst jetzt auf!» lieber: «Räumst du zuerst die Autos oder die Bücher weg?» Das Kind hat Kontrolle — und räumt trotzdem auf. Klingt simpel, wirkt wunderbar.</p>
+   <h4>Gefühle benennen</h4>
+   <p>«Ich sehe, dass du wütend bist, weil wir gehen müssen. Das ist okay.» Kinder beruhigen sich schneller, wenn sie sich verstanden fühlen. Validieren — dann umlenken.</p>`},
+  {cat:'Kinder-Tipps',title:'Trotzphase überleben — meine ehrlichen Erfahrungen',meta:'Von Jessica · Februar 2026',img:'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=900&q=80&fit=crop',
+   body:`<p>Liano war 2 — und plötzlich war alles ein Drama. Schuhe anziehen. Frühstücken. Ins Auto steigen. Ich habe geweint, gelacht und viel gelernt.</p>
+   <h4>Was die Trotzphase wirklich ist</h4>
+   <p>Dein Kind entdeckt, dass es eine eigene Person ist. Das ist aufregend und überwältigend zugleich. Die Wut ist kein Angriff auf dich — sie ist <strong>Überforderung, die raus muss.</strong></p>
+   <h4>Was ich gelernt habe</h4>
+   <p>Vorwarnen hilft enorm: «In fünf Minuten gehen wir.» Kinder brauchen Übergänge. Überraschungen lösen Ausbrüche aus. Ich sage jetzt alles vorher an — und es gibt deutlich weniger Szenen.</p>
+   <blockquote>"Die Trotzphase ist kein Problem das gelöst werden muss. Es ist eine Phase die durchlebt werden will."</blockquote>
+   <h4>Rituale als Anker</h4>
+   <p>Gleiches Morgenritual, gleicher Schlafablauf. Kinder lieben Vorhersehbarkeit. In einer Welt die sich ständig ändert, sind Rituale ihr sicherer Hafen.</p>`},
+  {cat:'Aktivitäten',title:'10 Aktivitäten bei Regen — ohne Bildschirm',meta:'Von Jessica · Januar 2026',img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80&fit=crop',
+   body:`<p>Es regnet. Die Kinder drehen durch. Du auch fast. Hier meine erprobten Rettungsanker für Regentage — ohne Tablet.</p>
+   <h4>1. Perlen fädeln</h4>
+   <p>Natürlich. Mit einfachen Plastikperlen und einem Nylonfaden können schon 3-Jährige mitmachen. Motorik, Konzentration, Stolz — alles auf einmal.</p>
+   <h4>2. Mehl-Knetmasse selber machen</h4>
+   <p><strong>2 Tassen Mehl, 1 Tasse Salz, 1 Tasse Wasser, Lebensmittelfarbe.</strong> Hält sich eine Woche. Kinder kneten stundenlang.</p>
+   <h4>3. Schattentheater</h4>
+   <p>Taschenlampe, weisse Wand, Hände — fertig ist das Schattenspiel. Tiere, Figuren, kleine Geschichten. Liano liebt es bis heute.</p>
+   <blockquote>"Langeweile ist der Beginn von Kreativität — sie braucht nur etwas Zeit."</blockquote>
+   <h4>4. Backen / Kochen</h4>
+   <p>Muffins, Pfannkuchen, Guetzli. Kinder lieben es, Teil des Prozesses zu sein. Und das Ergebnis darf gegessen werden.</p>
+   <h4>Weitere Ideen</h4>
+   <p>Höhle bauen aus Decken · Bilderbücher nachspielen · Briefkasten aus Karton basteln · Zaubertricks üben · Familienfoto-Album anschauen · Memory selbst malen</p>`},
+  {cat:'Aktivitäten',title:'Ausflugstipps Aargau — die besten Orte mit Kindern',meta:'Von Jessica · November 2025',img:'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=900&q=80&fit=crop',
+   body:`<p>Ich wohne in der Region Aargau — und mit Liano und Ruan habe ich viele Ausflüge gemacht. Hier meine persönlichen Favoriten.</p>
+   <h4>Römermuseum Vindonissa, Brugg</h4>
+   <p>Geschichte zum Anfassen. Kinder dürfen vieles berühren, es gibt eine Kinderführung und der Eintritt ist moderat. <strong>Ideal ab 4 Jahren.</strong></p>
+   <h4>Hallwilersee</h4>
+   <p>Strand, Spielplatz, Wassertreten. Im Sommer ein Paradies. Der Seepark Seengen ist kostenlos und hat direkten Seezugang. Brotzeit mitbringen — fertig.</p>
+   <blockquote>"Die besten Ausflüge brauchen kein Budget — nur Zeit und Neugierde."</blockquote>
+   <h4>Tierpark Goldau</h4>
+   <p>Einer der schönsten Schweizer Tierparks. Bären, Wölfe, Luchse — alles in einer wunderschönen Landschaft. <strong>Ganztagsprogramm, Picknickplätze, kinderfreundlich.</strong></p>
+   <h4>Schloss Lenzburg</h4>
+   <p>Mittelalterliches Schloss mit Kinderführungen und Rittergeschichten. Liano war begeistert — «Da wohnt ein Drache!» Schöner kann Bildung nicht sein.</p>`},
+  {cat:'Mama-Leben',title:'Als Pflegefachfrau und Mama — wie ich Beruf und Familie verbinde',meta:'Von Jessica · Oktober 2025',img:'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=900&q=80&fit=crop',
+   body:`<p>Ich arbeite auf der Wochenbett-Station im Hirslanden — und bin gleichzeitig Mama von zwei kleinen Söhnen. Das ist manchmal viel. Hier meine ehrlichen Gedanken.</p>
+   <h4>Das Beste aus beiden Welten</h4>
+   <p>Ich begleite Frauen in einem der intensivsten Momente ihres Lebens — der Geburt und den ersten Tagen danach. Das <strong>gibt mir täglich Sinn und Perspektive.</strong> Wenn ich nach Hause komme, weiss ich was wirklich zählt.</p>
+   <blockquote>"Der Beruf hat mich gelehrt, Mütter zu verstehen. Das Muttersein hat mich gelehrt, meinen Beruf zu lieben."</blockquote>
+   <h4>Was mir hilft</h4>
+   <p>Klare Übergaben — wenn ich arbeite, bin ich ganz bei der Arbeit. Wenn ich zu Hause bin, bin ich ganz Mama. Handy weglegen, präsent sein. Das ist einfacher gesagt als getan — aber ich übe es täglich.</p>
+   <h4>JOIA als Ausgleich</h4>
+   <p>Das Fädeln ist meine Meditation. Zwischen Nachtschichten und Wickeln finde ich im Fädeln zur Ruhe. Jedes Ketteli ist ein Moment für mich — und ein Stück das einer anderen Mama Freude macht.</p>`},
 ];
 
 function renderBlog(){
@@ -649,6 +770,19 @@ function openBlog(i){
 }
 function closeBlogReader(){document.getElementById('blog-reader').classList.remove('open');}
 
+// ── KURSE ──
+function bookCourse(name){
+  document.getElementById('kurs-form-title').textContent=name+' — Anmeldung';
+  const wrap=document.getElementById('kurs-form-wrap');
+  wrap.style.display='block';
+  wrap.scrollIntoView({behavior:'smooth'});
+}
+function submitCourse(){
+  const name=document.getElementById('kf-fname').value||'—';
+  showNotif('Anmeldung für '+document.getElementById('kurs-form-title').textContent.split(' —')[0]+' eingegangen.');
+  document.getElementById('kurs-form-wrap').style.display='none';
+}
+
 // ── ABO ──
 function aboSubmit(e){e.preventDefault();showNotif(t[lang].abo_thanks);e.target.reset();}
 
@@ -660,7 +794,7 @@ const t={
   de:{
     nav_sec_shop:'Shop',nav_sec_joia:'JOIA',nav_home:'Start',nav_kol:'Kollektion',
     nav_wunsch:'Wunsch-Ketteli',nav_tasche:'Tasche',nav_story:'Über Jessica',
-    nav_blog:'Journal',nav_abo:'Mama-Tipps Abo',
+    nav_blog:'Journal',nav_kurse:'Kurse',nav_abo:'Mama-Tipps Abo',
     pill_hand:'Handgefertigt',pill_uni:'Unikat',
     h1a:'Schmuck der',h1em:'verbindet',
     hero_desc:'Jedes Ketteli, jedes Krälleli — handgefädelt von Jessica in der Schweiz.',
@@ -687,7 +821,7 @@ const t={
   en:{
     nav_sec_shop:'Shop',nav_sec_joia:'JOIA',nav_home:'Home',nav_kol:'Collection',
     nav_wunsch:'Custom Piece',nav_tasche:'Bag',nav_story:'About Jessica',
-    nav_blog:'Journal',nav_abo:'Mama Tips',
+    nav_blog:'Journal',nav_kurse:'Courses',nav_abo:'Mama Tips',
     pill_hand:'Handcrafted',pill_uni:'Unique',
     h1a:'Jewellery that',h1em:'connects',
     hero_desc:'Every bracelet, every necklace — hand-threaded by Jessica in Switzerland.',
@@ -714,7 +848,7 @@ const t={
   pt:{
     nav_sec_shop:'Loja',nav_sec_joia:'JOIA',nav_home:'Início',nav_kol:'Colecção',
     nav_wunsch:'Peça à Medida',nav_tasche:'Saco',nav_story:'Sobre a Jessica',
-    nav_blog:'Diário',nav_abo:'Dicas de Mãe',
+    nav_blog:'Diário',nav_kurse:'Cursos',nav_abo:'Dicas de Mãe',
     pill_hand:'Feito à Mão',pill_uni:'Único',
     h1a:'Joias que',h1em:'ligam',
     hero_desc:'Cada colar, cada pulseira — feito à mão pela Jessica na Suíça.',
