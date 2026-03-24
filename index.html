@@ -304,8 +304,8 @@ footer{padding:72px 60px 48px;border-top:1px solid var(--border);background:var(
   <div class="hero-right">
     <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=900&q=85&fit=crop" alt="JOIA Schmuck"/>
     <div class="hero-badge">
-      <p data-i="hero_badge_label">Hergestellt in der Schweiz</p>
-      <strong>Swiss Handmade</strong>
+      <p data-i="hero_badge_label">Signatur-Stück</p>
+      <strong>Namens-Armbändeli</strong>
     </div>
     <div class="deco-line"></div>
   </div>
@@ -340,6 +340,12 @@ footer{padding:72px 60px 48px;border-top:1px solid var(--border);background:var(
     <h3 class="pillar-title" data-i="p3_title">Für Mamas</h3>
     <p class="pillar-desc" data-i="p3_desc">Entworfen von einer Mama, für Mamas. Praktisch im Alltag, schön bei jedem Anlass.</p>
   </div>
+</div>
+
+<!-- NAMENS-HIGHLIGHT -->
+<div style="background:var(--dark);padding:28px 60px;text-align:center;border-top:1px solid rgba(196,181,165,.15);border-bottom:1px solid rgba(196,181,165,.15)">
+  <p style="font-size:10px;letter-spacing:.3em;color:var(--taupe);text-transform:uppercase;margin-bottom:8px">Das Besondere an JOIA</p>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(18px,3vw,28px);font-weight:300;color:var(--ivory)">Jedes Armbändeli trägt einen Namen — deinen, den deines Kindes, oder beides.</p>
 </div>
 
 <!-- PRODUCTS -->
@@ -410,8 +416,8 @@ footer{padding:72px 60px 48px;border-top:1px solid var(--border);background:var(
   <div class="story-text">
     <p class="sec-eyebrow" data-i="story_eyebrow">Über Jessica</p>
     <h2><span data-i="story_h2a">Gemacht von einer Mama,</span><br/><em data-i="story_h2em">für Mamas.</em></h2>
-    <p data-i="story_p1">Ich bin Jessica — Portugiesin, Mama zweier wunderbarer Söhne, und seit meiner Kindheit fasziniert von kleinen, schönen Dingen. Das Fädeln begann als Nebenbeschäftigung in den Mittagsschlafzeiten.</p>
-    <p data-i="story_p2">Als andere Mamas fragten, woher der Schmuck stamme, war JOIA geboren. Jedes Stück trägt ein Stück meiner Geschichte — zwischen Lissabon und der Schweiz.</p>
+    <p data-i="story_p1">Ich bin Jessica, Jahrgang 1989, diplomierte Pflegefachfrau auf dem Wochenbett im Hirslanden und Mama zweier wunderbarer Söhne. Zwischen Nachtschichten und Mittagsschlafzeiten begann das Fädeln.</p>
+    <p data-i="story_p2">Das erste Armbändeli schuf ich für Liano — mit seinem Namen in goldenen Buchstabenperlen. Als Mamas auf der Wochenbettstation fragten ob sie auch eines haben könnten, war JOIA geboren.</p>
     <div class="story-children">
       <div class="child-item">
         <p data-i="child_label">Sohn</p>
@@ -564,12 +570,12 @@ footer{padding:72px 60px 48px;border-top:1px solid var(--border);background:var(
 <script>
 // ── PRODUCTS ──
 const products=[
-  {id:1,name:"Pastell-Ketteli",sub:"Saatperlen · Pastellmix",tag:"Bestseller",price:35,img:"https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=500&q=80&fit=crop"},
-  {id:2,name:"Mint-Armbändeli",sub:"Rocailles · Mintgrün",tag:"Neu",price:22,img:"https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&q=80&fit=crop"},
-  {id:3,name:"Mama & Baby Set",sub:"Matching · 2 Stück",tag:"Familienset",price:52,img:"https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500&q=80&fit=crop"},
-  {id:4,name:"Wunsch-Ketteli",sub:"Nach Mass · Personalisiert",tag:"Auf Bestellung",price:42,img:"https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500&q=80&fit=crop"},
-  {id:5,name:"Lavendel-Krälleli",sub:"Saatperlen · Lilatöne",tag:"Handgemacht",price:32,img:"https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=500&q=80&fit=crop"},
-  {id:6,name:"Geschenkset",sub:"Ketteli + Armband · Box",tag:"Geschenk",price:68,img:"https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=500&q=80&fit=crop"},
+  {id:1,name:"Namens-Armbändeli",sub:"Goldperlen · Buchstabenperlen · Personalisiert",tag:"Signature",price:38,img:"https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&q=80&fit=crop",desc:"Das Herzstück von JOIA — ein Armbändeli mit deinem Namen oder dem deines Kindes. Goldene Saatperlen, Buchstabenperlen in Wunschfarbe. Jedes Stück ein Unikat."},
+  {id:2,name:"Mama & Kind Set",sub:"Matching · 2 Namens-Armbändeli",tag:"Familienset",price:65,img:"https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500&q=80&fit=crop",desc:"Zwei aufeinander abgestimmte Armbändeli — eines mit Mama, eines mit dem Kindernamen. Getragen nah am Herzen."},
+  {id:3,name:"Charm-Ketteli",sub:"Saatperlen · Anhänger",tag:"Bestseller",price:42,img:"https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=500&q=80&fit=crop",desc:"Zartes Ketteli aus cremeweissen oder rosafarbenen Saatperlen mit einem Charm deiner Wahl — Pfirsich, Herz, Blume oder Ananas."},
+  {id:4,name:"Transparentes Krälleli",sub:"Kristallklare Rocailles · Fein",tag:"Neu",price:28,img:"https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=500&q=80&fit=crop",desc:"Feine, transparente Rocailles — dezent, modern, zu allem tragbar. Das stille Stück für jeden Tag."},
+  {id:5,name:"Goldenes Ring-Set",sub:"Saatperlen · 3 Ringe",tag:"Ring-Set",price:24,img:"https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500&q=80&fit=crop",desc:"Drei zarte Ringe aus Saatperlen — in Gold, Türkis und Limone. Einzeln oder gestapelt getragen ein echter Hingucker."},
+  {id:6,name:"Wunsch-Ketteli",sub:"Deine Farben · Dein Name",tag:"Personalisiert",price:45,img:"https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=500&q=80&fit=crop",desc:"Du wählst Farbe, Länge und ob ein Name eingearbeitet werden soll. Ich fädle — du trägst es mit Geschichte."},
 ];
 
 let cart=[];
@@ -728,8 +734,8 @@ const t={
     custom_colors_label:'Farben wählen', custom_type_label:'Art', custom_note_label:'Notiz',
     custom_btn:'Anfrage senden', custom_delivery_label:'Lieferzeit', custom_delivery:'7–10 Werktage',
     story_eyebrow:'Über Jessica', story_h2a:'Gemacht von einer Mama,', story_h2em:'für Mamas.',
-    story_p1:'Ich bin Jessica — Portugiesin, Mama zweier wunderbarer Söhne, und seit meiner Kindheit fasziniert von kleinen, schönen Dingen.',
-    story_p2:'Als andere Mamas fragten, woher der Schmuck stamme, war JOIA geboren. Jedes Stück trägt ein Stück meiner Geschichte — zwischen Lissabon und der Schweiz.',
+    story_p1:'Ich bin Jessica, Jahrgang 1989, diplomierte Pflegefachfrau auf dem Wochenbett im Hirslanden und Mama zweier wunderbarer Söhne. Zwischen Nachtschichten und Mittagsschlafzeiten begann das Fädeln.',
+    story_p2:'Das erste Armbändeli schuf ich für Liano — mit seinem Namen in goldenen Buchstabenperlen. Als Mamas auf der Wochenbettstation fragten ob sie auch eines haben könnten, war JOIA geboren.',
     child_label:'Sohn',
     blog_eyebrow:'Le Journal', blog_title:'Mama-Tipps & Inspiration', blog_read:'Lesen',
     blog_cat_1:'Ernährung', blog_title_1:'Das Morgenritual', blog_desc_1:'Wie drei kleine Gewohnheiten deinen ganzen Tag verändern können.',
@@ -768,8 +774,8 @@ const t={
     custom_colors_label:'Choose colours', custom_type_label:'Type', custom_note_label:'Note',
     custom_btn:'Send request', custom_delivery_label:'Delivery time', custom_delivery:'7–10 working days',
     story_eyebrow:'About Jessica', story_h2a:'Made by a mama,', story_h2em:'for mamas.',
-    story_p1:"I'm Jessica — Portuguese, mama of two wonderful boys, and fascinated by small, beautiful things since childhood.",
-    story_p2:'When other mamas asked where the jewellery came from, JOIA was born. Every piece carries a piece of my story — between Lisbon and Switzerland.',
+    story_p1:"I'm Jessica, born in 1989 in Portugal, a trained midwifery nurse at Hirslanden and mama of two wonderful boys. Between night shifts and nap times, the threading began.",
+    story_p2:'The first bracelet I made was for Liano — his name in golden letter beads. When mamas on the maternity ward asked for one too, JOIA was born.',
     child_label:'Son',
     blog_eyebrow:'Le Journal', blog_title:'Mama Tips & Inspiration', blog_read:'Read',
     blog_cat_1:'Nutrition', blog_title_1:'The Morning Ritual', blog_desc_1:'How three small habits can transform your whole day.',
@@ -808,8 +814,8 @@ const t={
     custom_colors_label:'Escolher cores', custom_type_label:'Tipo', custom_note_label:'Nota',
     custom_btn:'Enviar pedido', custom_delivery_label:'Prazo de entrega', custom_delivery:'7–10 dias úteis',
     story_eyebrow:'Sobre a Jessica', story_h2a:'Feito por uma mãe,', story_h2em:'para mães.',
-    story_p1:'Sou a Jessica — portuguesa, mãe de dois rapazes maravilhosos, e desde criança fascinada pelas coisas pequenas e bonitas.',
-    story_p2:'Quando outras mães perguntavam de onde vinha a joia, a JOIA nasceu. Cada peça carrega um pedaço da minha história — entre Lisboa e a Suíça.',
+    story_p1:'Sou a Jessica, nascida em 1989 em Portugal, enfermeira diplomada no internamento de puerpério do Hirslanden e mãe de dois rapazes maravilhosos. Entre turnos nocturnos e horas de sesta, comecei a enfilar.',
+    story_p2:'A primeira pulseira fiz para o Liano — com o nome dele em missangas de letras douradas. Quando as mães no puerpério pediram uma igual, a JOIA nasceu.',
     child_label:'Filho',
     blog_eyebrow:'Le Journal', blog_title:'Dicas de Mãe & Inspiração', blog_read:'Ler',
     blog_cat_1:'Nutrição', blog_title_1:'O Ritual da Manhã', blog_desc_1:'Como três pequenos hábitos podem transformar o teu dia.',
