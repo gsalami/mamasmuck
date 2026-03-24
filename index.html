@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mama & Mück — Handgemachter Schmuck aus der Schweiz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --sand:#faf7f2;
+  --warm:#f5ede0;
+  --clay:#d4a882;
+  --clay-dark:#b8895f;
+  --sage:#8fa888;
+  --sage-light:#c8d9c3;
+  --text:#2c2418;
+  --gray:#8a7d6e;
+  --border:rgba(212,168,130,.2);
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Inter',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--sand);color:var(--text);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:rgba(250,247,242,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--serif);font-size:20px;color:var(--text);text-decoration:none;letter-spacing:.05em}
+.nav-logo span{color:var(--clay)}
+.nav-links{display:flex;gap:32px;font-size:12px;letter-spacing:.12em;color:var(--gray)}
+.nav-links a{color:var(--gray);text-decoration:none;transition:.3s}
+.nav-links a:hover{color:var(--clay)}
+.nav-cart{font-size:12px;letter-spacing:.12em;color:var(--clay);cursor:pointer;border:1px solid var(--border);padding:8px 20px;transition:.3s}
+.nav-cart:hover{background:var(--clay);color:white;border-color:var(--clay)}
+.mobile-menu-btn{display:none;background:none;border:none;font-size:20px;color:var(--text);cursor:pointer}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:100px 48px 60px;gap:80px;background:var(--sand)}
+.hero-text{}
+.hero-tag{font-size:10px;letter-spacing:.3em;color:var(--clay);text-transform:uppercase;margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.hero-tag::before{content:'';width:32px;height:1px;background:var(--clay)}
+.hero-h1{font-family:var(--serif);font-size:clamp(42px,5vw,68px);font-weight:400;line-height:1.15;color:var(--text);margin-bottom:24px}
+.hero-h1 em{color:var(--clay);font-style:italic}
+.hero-desc{font-size:15px;line-height:1.9;color:var(--gray);margin-bottom:40px;max-width:460px}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{display:inline-block;padding:15px 36px;background:var(--clay);color:white;font-family:var(--sans);font-size:12px;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:all .3s}
+.btn-primary:hover{background:var(--clay-dark)}
+.btn-outline{display:inline-block;padding:15px 36px;background:transparent;color:var(--text);font-family:var(--sans);font-size:12px;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(44,36,24,.2);cursor:pointer;transition:all .3s}
+.btn-outline:hover{border-color:var(--clay);color:var(--clay)}
+.hero-badges{display:flex;gap:20px;margin-top:36px}
+.badge{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--gray);letter-spacing:.08em}
+.badge-icon{font-size:16px}
+.hero-image{position:relative}
+.hero-img-wrap{aspect-ratio:3/4;overflow:hidden;background:var(--warm)}
+.hero-img-wrap img{width:100%;height:100%;object-fit:cover;filter:brightness(.95)}
+.hero-img-tag{position:absolute;bottom:24px;left:-20px;background:white;padding:16px 20px;box-shadow:0 4px 24px rgba(0,0,0,.08);min-width:180px}
+.hero-img-tag p{font-size:11px;color:var(--gray);margin-bottom:4px}
+.hero-img-tag strong{font-family:var(--serif);font-size:15px;color:var(--text)}
+
+/* MARQUEE */
+.marquee-bar{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--warm);padding:14px 0}
+.marquee-inner{display:flex;gap:48px;white-space:nowrap;animation:scroll 25s linear infinite;font-size:11px;letter-spacing:.2em;color:var(--clay)}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ABOUT STRIP */
+.about-strip{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--border)}
+.about-item{padding:48px 40px;border-right:1px solid var(--border);text-align:center}
+.about-item:last-child{border-right:none}
+.about-icon{font-size:32px;margin-bottom:16px}
+.about-title{font-family:var(--serif);font-size:20px;color:var(--text);margin-bottom:8px}
+.about-desc{font-size:13px;color:var(--gray);line-height:1.8}
+
+/* PRODUCTS */
+.products{padding:100px 48px;max-width:1400px;margin:0 auto}
+.section-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:60px}
+.section-tag{font-size:10px;letter-spacing:.3em;color:var(--clay);text-transform:uppercase;margin-bottom:12px}
+.section-title{font-family:var(--serif);font-size:clamp(32px,4vw,48px);font-weight:400;color:var(--text)}
+.products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.product-card{cursor:pointer;group:true}
+.product-img{aspect-ratio:1;overflow:hidden;background:var(--warm);margin-bottom:20px;position:relative}
+.product-img img{width:100%;height:100%;object-fit:cover;transition:.5s;filter:brightness(.92)}
+.product-card:hover .product-img img{transform:scale(1.04);filter:brightness(1)}
+.product-tag-pill{position:absolute;top:12px;left:12px;background:white;font-size:9px;letter-spacing:.15em;color:var(--clay);padding:4px 10px;text-transform:uppercase}
+.product-add{position:absolute;bottom:12px;right:12px;background:var(--clay);color:white;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:18px;opacity:0;transition:.3s;border:none;cursor:pointer}
+.product-card:hover .product-add{opacity:1}
+.product-name{font-family:var(--serif);font-size:17px;color:var(--text);margin-bottom:4px}
+.product-sub{font-size:11px;color:var(--gray);letter-spacing:.1em;margin-bottom:8px}
+.product-price{font-size:15px;color:var(--clay-dark);font-weight:400}
+
+/* STORY */
+.story{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.story-img{aspect-ratio:4/5;overflow:hidden}
+.story-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.9)}
+.story-text{padding:80px 72px}
+.story-text h2{font-family:var(--serif);font-size:clamp(32px,4vw,48px);font-weight:400;line-height:1.2;color:var(--text);margin:16px 0 24px}
+.story-text h2 em{color:var(--clay)}
+.story-text p{font-size:14px;line-height:2;color:var(--gray);margin-bottom:20px}
+.story-sig{font-family:var(--serif);font-size:22px;font-style:italic;color:var(--clay);margin-top:32px}
+
+/* TIPS SECTION */
+.tips-section{padding:100px 48px;background:var(--warm)}
+.tips-inner{max-width:1200px;margin:0 auto}
+.tips-header{text-align:center;margin-bottom:60px}
+.tips-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.tip-card{background:var(--sand);padding:40px 32px;cursor:pointer;transition:.3s;position:relative;overflow:hidden;border:1px solid transparent}
+.tip-card:hover{border-color:var(--clay);transform:translateY(-4px)}
+.tip-city{font-size:9px;letter-spacing:.25em;color:var(--clay);text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.tip-city::before{content:'📍';font-size:12px}
+.tip-emoji{font-size:36px;margin-bottom:16px;display:block}
+.tip-title{font-family:var(--serif);font-size:20px;color:var(--text);margin-bottom:8px;line-height:1.3}
+.tip-desc{font-size:13px;color:var(--gray);line-height:1.8;margin-bottom:20px}
+.tip-tags{display:flex;gap:8px;flex-wrap:wrap}
+.tip-tag{font-size:9px;letter-spacing:.1em;color:var(--sage);border:1px solid var(--sage-light);padding:3px 10px;text-transform:uppercase}
+.tip-read{font-size:11px;letter-spacing:.15em;color:var(--clay);text-decoration:none;text-transform:uppercase;margin-top:16px;display:block}
+
+/* MODAL */
+.overlay{display:none;position:fixed;inset:0;background:rgba(44,36,24,.5);z-index:200;backdrop-filter:blur(4px)}
+.overlay.open{display:block}
+.modal{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(.96);width:520px;max-width:92vw;max-height:85vh;overflow-y:auto;background:var(--sand);z-index:201;padding:48px;opacity:0;pointer-events:none;transition:all .35s cubic-bezier(.4,0,.2,1)}
+.modal.open{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:all}
+.modal-close{position:absolute;top:20px;right:20px;background:none;border:none;font-size:20px;color:var(--gray);cursor:pointer}
+.modal-close:hover{color:var(--clay)}
+
+/* CART */
+.cart-sidebar{position:fixed;top:0;right:-460px;width:460px;height:100%;background:var(--sand);border-left:1px solid var(--border);z-index:201;transition:right .4s;display:flex;flex-direction:column;padding:36px}
+.cart-sidebar.open{right:0}
+.cart-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:24px;margin-bottom:32px}
+.cart-head span{font-family:var(--serif);font-size:20px;color:var(--text)}
+.cart-close{background:none;border:none;font-size:18px;color:var(--gray);cursor:pointer}
+.cart-items{flex:1;overflow-y:auto}
+.cart-empty{font-size:14px;color:var(--gray);text-align:center;margin-top:60px;line-height:2}
+.cart-item{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--border)}
+.cart-item-img{width:72px;height:72px;object-fit:cover;flex-shrink:0;background:var(--warm)}
+.cart-item-info{flex:1}
+.cart-item-name{font-family:var(--serif);font-size:16px;color:var(--text);margin-bottom:4px}
+.cart-item-price{font-size:13px;color:var(--clay)}
+.cart-item-rm{background:none;border:none;color:var(--gray);cursor:pointer;font-size:14px}
+.cart-foot{border-top:1px solid var(--border);padding-top:24px;margin-top:24px}
+.cart-total{display:flex;justify-content:space-between;font-family:var(--serif);font-size:20px;margin-bottom:24px}
+
+/* NEWSLETTER */
+.newsletter{padding:100px 48px;text-align:center;border-top:1px solid var(--border)}
+.newsletter-inner{max-width:520px;margin:0 auto}
+.newsletter h3{font-family:var(--serif);font-size:clamp(28px,4vw,40px);font-weight:400;margin:16px 0 16px;color:var(--text)}
+.newsletter p{font-size:14px;color:var(--gray);margin-bottom:36px;line-height:1.8}
+.nl-form{display:flex}
+.nl-input{flex:1;border:1px solid var(--border);border-right:none;padding:14px 20px;background:transparent;font-family:var(--sans);font-size:13px;color:var(--text);outline:none}
+.nl-input:focus{border-color:var(--clay)}
+.nl-input::placeholder{color:var(--gray)}
+.nl-btn{background:var(--clay);border:none;color:white;padding:14px 28px;font-size:11px;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:.3s}
+.nl-btn:hover{background:var(--clay-dark)}
+
+/* FOOTER */
+footer{padding:60px 48px 40px;border-top:1px solid var(--border);background:var(--warm)}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;margin-bottom:48px}
+.footer-brand{font-family:var(--serif);font-size:22px;color:var(--text);margin-bottom:16px}
+.footer-brand span{color:var(--clay)}
+.footer-desc{font-size:13px;color:var(--gray);line-height:1.9;max-width:300px}
+.footer-col h4{font-size:10px;letter-spacing:.25em;color:var(--clay);text-transform:uppercase;margin-bottom:20px}
+.footer-col a{display:block;font-size:13px;color:var(--gray);text-decoration:none;margin-bottom:10px;transition:.3s}
+.footer-col a:hover{color:var(--clay)}
+.footer-bottom{display:flex;justify-content:space-between;font-size:11px;color:var(--gray);padding-top:24px;border-top:1px solid var(--border)}
+
+/* NOTIFICATION */
+.notif{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--text);color:white;padding:14px 28px;font-size:12px;letter-spacing:.1em;z-index:300;transition:transform .4s;white-space:nowrap}
+.notif.show{transform:translateX(-50%) translateY(0)}
+
+/* LANG */
+.lang-sw{position:fixed;bottom:28px;right:28px;z-index:150;display:flex;gap:0;background:var(--sand);border:1px solid var(--border)}
+.lang-btn{background:none;border:none;font-size:11px;letter-spacing:.15em;color:var(--gray);padding:10px 14px;cursor:pointer;transition:.3s}
+.lang-btn.active{background:var(--clay);color:white}
+
+@media(max-width:1024px){
+  .products-grid{grid-template-columns:repeat(2,1fr)}
+  .tips-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  nav{padding:16px 20px}
+  .nav-links{display:none}
+  .mobile-menu-btn{display:block}
+  .hero{grid-template-columns:1fr;padding:100px 20px 60px;gap:40px}
+  .hero-image{display:none}
+  .about-strip{grid-template-columns:1fr}
+  .about-item{border-right:none;border-bottom:1px solid var(--border);padding:36px 24px}
+  .products{padding:60px 20px}
+  .products-grid{grid-template-columns:repeat(2,1fr);gap:20px}
+  .story{grid-template-columns:1fr}
+  .story-img{aspect-ratio:16/9}
+  .story-text{padding:48px 24px}
+  .tips-section{padding:60px 20px}
+  .tips-grid{grid-template-columns:1fr}
+  .newsletter{padding:60px 20px}
+  .nl-form{flex-direction:column}
+  .nl-input{border-right:1px solid var(--border);margin-bottom:0}
+  footer{padding:48px 20px 32px}
+  .footer-top{grid-template-columns:1fr}
+  .cart-sidebar{width:100%;right:-100%}
+  .lang-sw{bottom:20px;right:16px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">mama<span>&</span>mück</a>
+  <div class="nav-links">
+    <a href="#kollektion">Kollektion</a>
+    <a href="#story">Über mich</a>
+    <a href="#tipps">Mama-Tipps</a>
+    <a href="#kontakt">Kontakt</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:16px">
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+    <div class="nav-cart" onclick="openCart()">Tasche (<span id="count">0</span>)</div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mob-menu" style="display:none;position:fixed;top:60px;left:0;right:0;background:var(--sand);border-bottom:1px solid var(--border);padding:24px;z-index:99">
+  <a href="#kollektion" onclick="toggleMobileMenu()" style="display:block;padding:14px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--text);text-decoration:none">Kollektion</a>
+  <a href="#story" onclick="toggleMobileMenu()" style="display:block;padding:14px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--text);text-decoration:none">Über mich</a>
+  <a href="#tipps" onclick="toggleMobileMenu()" style="display:block;padding:14px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--text);text-decoration:none">Mama-Tipps</a>
+  <a href="#kontakt" onclick="toggleMobileMenu()" style="display:block;padding:14px 0;font-size:14px;color:var(--text);text-decoration:none">Kontakt</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <p class="hero-tag">Swiss Made · Handgemacht · Mit Liebe</p>
+    <h1 class="hero-h1">Schmuck der<br/>deine Geschichte<br/><em>erzählt</em></h1>
+    <p class="hero-desc">Jedes Krälleli, jede Kette — mit Hand gefertigt in der Schweiz. Für Mütter, die Stil und Alltag verbinden. Ohne Kompromisse.</p>
+    <div class="hero-actions">
+      <a href="#kollektion" class="btn-primary">Kollektion entdecken</a>
+      <a href="#story" class="btn-outline">Meine Geschichte</a>
+    </div>
+    <div class="hero-badges">
+      <span class="badge"><span class="badge-icon">🇨🇭</span> Swiss Made</span>
+      <span class="badge"><span class="badge-icon">🤲</span> Handgemacht</span>
+      <span class="badge"><span class="badge-icon">♻️</span> Nachhaltig</span>
+    </div>
+  </div>
+  <div class="hero-image">
+    <div class="hero-img-wrap">
+      <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=85&fit=crop" alt="Schmuck handgemacht"/>
+    </div>
+    <div class="hero-img-tag">
+      <p>Neuheit 2026</p>
+      <strong>Mama-Kollektion 🌸</strong>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-bar">
+  <div class="marquee-inner">
+    <span>SWISS MADE</span><span>✦</span><span>HANDGEMACHT</span><span>✦</span>
+    <span>GRATIS LIEFERUNG AB CHF 80</span><span>✦</span><span>JEDES STÜCK EIN UNIKAT</span><span>✦</span>
+    <span>NACHHALTIGE MATERIALIEN</span><span>✦</span><span>MIT LIEBE GEMACHT</span><span>✦</span>
+    <span>SWISS MADE</span><span>✦</span><span>HANDGEMACHT</span><span>✦</span>
+    <span>GRATIS LIEFERUNG AB CHF 80</span><span>✦</span><span>JEDES STÜCK EIN UNIKAT</span><span>✦</span>
+    <span>NACHHALTIGE MATERIALIEN</span><span>✦</span><span>MIT LIEBE GEMACHT</span><span>✦</span>
+  </div>
+</div>
+
+<!-- ABOUT STRIP -->
+<div class="about-strip">
+  <div class="about-item">
+    <div class="about-icon">🤲</div>
+    <h3 class="about-title">Handgemacht</h3>
+    <p class="about-desc">Jedes Stück entsteht mit Hand und Herz — kein Massenprodukt, sondern ein Unikat das zu dir passt.</p>
+  </div>
+  <div class="about-item">
+    <div class="about-icon">🇨🇭</div>
+    <h3 class="about-title">Swiss Made</h3>
+    <p class="about-desc">Gefertigt in der Schweiz, mit hochwertigen Materialien aus lokalen Quellen. Qualität die bleibt.</p>
+  </div>
+  <div class="about-item">
+    <div class="about-icon">💌</div>
+    <h3 class="about-title">Mit Botschaft</h3>
+    <p class="about-desc">Jede Kette, jedes Krälleli kann personalisiert werden — als Erinnerung, Geschenk oder stilles Zeichen.</p>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="products" id="kollektion">
+  <div class="section-header">
+    <div>
+      <p class="section-tag">Die Kollektion</p>
+      <h2 class="section-title">Handgefertigter Schmuck</h2>
+    </div>
+    <a href="#" class="btn-outline" style="font-size:11px">Alle ansehen</a>
+  </div>
+  <div class="products-grid" id="products-grid"></div>
+</section>
+
+<!-- STORY -->
+<section class="story" id="story">
+  <div class="story-img">
+    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=85&fit=crop" alt="Meine Geschichte"/>
+  </div>
+  <div class="story-text">
+    <p class="section-tag">Über mich</p>
+    <h2>Gemacht von einer Mama, <em>für Mamas</em></h2>
+    <p>Als meine Tochter auf die Welt kam, merkte ich: Schmuck der wirklich zu meinem neuen Leben passt, war schwer zu finden. Entweder zu teuer, zu unpraktisch oder einfach ohne Seele.</p>
+    <p>Also habe ich angefangen, selbst zu machen. Mit Perlen, Ketten und viel Geduld während der Mittagsschlafzeiten. Irgendwann fragten andere Mamas — und daraus wurde <strong>mama & mück</strong>.</p>
+    <p>Jedes Stück ist ein Unikat. Gefertigt in meiner kleinen Werkstatt in der Schweiz, mit Materialien die ich selbst aussuche und liebe.</p>
+    <div class="story-sig">Nicola ✦</div>
+  </div>
+</section>
+
+<!-- MAMA TIPPS -->
+<section class="tips-section" id="tipps">
+  <div class="tips-inner">
+    <div class="tips-header">
+      <p class="section-tag">Von Mamas für Mamas</p>
+      <h2 class="section-title" style="text-align:center;margin-top:8px">Mama-Tipps & Lieblingsorte</h2>
+      <p style="font-size:14px;color:var(--gray);margin-top:16px;max-width:500px;margin-left:auto;margin-right:auto;text-align:center">Kaffeepausen, Ausflüge und Geheimtipps für Mamas in Zürich und Baden — von mir persönlich getestet. ☕</p>
+    </div>
+    <div class="tips-grid" id="tips-grid"></div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter" id="kontakt">
+  <div class="newsletter-inner">
+    <p class="section-tag">Mama-Community</p>
+    <h3>Bleib auf dem Laufenden</h3>
+    <p>Neue Kollektionen, Mama-Tipps und exklusive Angebote — direkt in dein Postfach. Kein Spam, versprochen.</p>
+    <form class="nl-form" onsubmit="nlSubmit(event)">
+      <input class="nl-input" type="email" placeholder="Deine E-Mail-Adresse" required/>
+      <button class="nl-btn" type="submit">Anmelden</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">mama<span>&</span>mück</div>
+      <p class="footer-desc">Handgemachter Schmuck aus der Schweiz — für Mamas die ihren eigenen Stil haben. Jedes Stück mit Liebe gefertigt.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <a href="#">Krälleli</a>
+      <a href="#">Ketteli</a>
+      <a href="#">Armbändeli</a>
+      <a href="#">Geschenksets</a>
+    </div>
+    <div class="footer-col">
+      <h4>Über uns</h4>
+      <a href="#">Meine Geschichte</a>
+      <a href="#">Materialien</a>
+      <a href="#">Mama-Tipps</a>
+      <a href="#">Kontakt</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 mama & mück. Alle Rechte vorbehalten.</span>
+    <span>Datenschutz · AGB · Impressum</span>
+  </div>
+</footer>
+
+<!-- CART -->
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<div class="cart-sidebar" id="cart">
+  <div class="cart-head">
+    <span>Deine Tasche</span>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items">
+    <p class="cart-empty">Deine Tasche ist leer.<br/>Entdecke unsere Kollektion! 🌸</p>
+  </div>
+  <div id="cart-foot" style="display:none">
+    <div class="cart-foot">
+      <div class="cart-total" id="cart-total"></div>
+      <button class="btn-primary" style="width:100%;text-align:center">Zur Kasse →</button>
+    </div>
+  </div>
+</div>
+
+<!-- TIP MODAL -->
+<div class="modal" id="tip-modal">
+  <button class="modal-close" onclick="closeTipModal()">✕</button>
+  <div id="tip-modal-content"></div>
+</div>
+
+<!-- NOTIF -->
+<div class="notif" id="notif"></div>
+
+<!-- LANG -->
+<div class="lang-sw">
+  <button class="lang-btn active" onclick="setLang('de')" id="l-de">DE</button>
+  <button class="lang-btn" onclick="setLang('fr')" id="l-fr">FR</button>
+</div>
+
+<script>
+// ── PRODUCTS ──
+const products = [
+  {id:1,name:"Mama-Krälleli",sub:"Perlen · Pastell",tag:"BESTSELLER",price:38,img:"https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=400&q=80&fit=crop",desc:"Zarte Perlenkette handgefädelt. Jede Perle ausgewählt mit Liebe. Passt zum Alltagslook wie zum Abend."},
+  {id:2,name:"Silber-Ketteli",sub:"925 Silber · Fein",tag:"NEU",price:55,img:"https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&q=80&fit=crop",desc:"Filigranes Silberketteli, handgefertigt in der Schweiz. Zeitlos, leicht, für immer."},
+  {id:3,name:"Mama-Armband",sub:"Vergoldet · Charms",tag:"HANDGEMACHT",price:45,img:"https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&q=80&fit=crop",desc:"Armband mit wählbaren Charms — Geburtsstein, Initialen, Herz. Dein ganz persönliches Stück."},
+  {id:4,name:"Mini-Set",sub:"Krälleli + Armband",tag:"GESCHENKSET",price:75,img:"https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&q=80&fit=crop",desc:"Das perfekte Geschenk für eine Mama. Kette und Armband im Set, schön verpackt in einer Leinenbox."},
+];
+
+let cart = [];
+
+document.getElementById('products-grid').innerHTML = products.map(p=>`
+  <div class="product-card">
+    <div class="product-img">
+      <img src="${p.img}" alt="${p.name}" loading="lazy"/>
+      <span class="product-tag-pill">${p.tag}</span>
+      <button class="product-add" onclick="addToCart(${p.id})" title="In die Tasche">+</button>
+    </div>
+    <h3 class="product-name">${p.name}</h3>
+    <p class="product-sub">${p.sub}</p>
+    <p class="product-price">CHF ${p.price.toFixed(2)}</p>
+  </div>`).join('');
+
+function addToCart(id){
+  const p = products.find(x=>x.id===id);
+  const e = cart.find(x=>x.id===id);
+  if(e) e.qty++; else cart.push({...p, qty:1});
+  updateCart(); openCart();
+  showNotif(`${p.name} zur Tasche hinzugefügt 🌸`);
+}
+function removeFromCart(id){ cart=cart.filter(x=>x.id!==id); updateCart(); if(!cart.length) closeCart(); }
+function updateCart(){
+  const total = cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const count = cart.reduce((s,i)=>s+i.qty,0);
+  document.getElementById('count').textContent = count;
+  const el = document.getElementById('cart-items');
+  const ft = document.getElementById('cart-foot');
+  if(!cart.length){
+    el.innerHTML='<p class="cart-empty">Deine Tasche ist leer.<br/>Entdecke unsere Kollektion! 🌸</p>';
+    ft.style.display='none';
+  } else {
+    el.innerHTML = cart.map(i=>`
+      <div class="cart-item">
+        <img class="cart-item-img" src="${i.img}" alt="${i.name}"/>
+        <div class="cart-item-info">
+          <p class="cart-item-name">${i.name}</p>
+          <p class="cart-item-price">CHF ${(i.price*i.qty).toFixed(2)} · ${i.qty}×</p>
+        </div>
+        <button class="cart-item-rm" onclick="removeFromCart(${i.id})">✕</button>
+      </div>`).join('');
+    ft.style.display='block';
+    document.getElementById('cart-total').innerHTML=`<span>Total</span><span>CHF ${total.toFixed(2)}</span>`;
+  }
+}
+function openCart(){ document.getElementById('cart').classList.add('open'); document.getElementById('overlay').classList.add('open'); }
+function closeCart(){ document.getElementById('cart').classList.remove('open'); document.getElementById('overlay').classList.remove('open'); }
+
+// ── TIPS ──
+const tips = [
+  {city:"Zürich",emoji:"☕",title:"Holy Cow Café",sub:"Das Mama-Café mit Wickelraum",desc:"Gemütliches Café an der Langstrasse mit grosszügigem Wickelraum, Hochstühlen und einer Spielecke. Der Kaffee ist hervorragend — und sie lächeln wirklich, wenn du mit Kinderwagen reinkommst.",tags:["Kinderwagen OK","Wickelraum","Spielecke"],adresse:"Langstrasse 24, 8004 Zürich",full:"Ein Geheimtipp der Zürcher Mama-Szene. Holy Cow ist nicht nur ein Café — es ist ein Rückzugsort. Das Team ist geschult im Umgang mit erschöpften Eltern und neugierigen Kleinkindern. Es gibt frische Säfte für die Kleinen, Oat-Latte für dich, und einen Wickelraum der tatsächlich sauber ist. Am Samstag oft Mama-Brunch — einfach vorbeischauen."},
+  {city:"Zürich",emoji:"🌿",title:"Hiltl Family Corner",sub:"Vegi-Lunch mit Spielbereich",desc:"Der älteste Vegetarier-Restaurant der Welt hat eine Family-Ecke. Buffet, Spielzeug, und ein Team das weiss wie man Kinder begeistert. Kein schlechtes Gewissen beim Essen.",tags:["Vegetarisch","Spielecke","Buffet"],adresse:"Sihlstrasse 28, 8001 Zürich",full:"Das Hiltl ist eine Zürcher Institution — und für Mamas ein wahres Geschenk. Der Family Corner im Untergeschoss bietet einen direkten Zugang vom Spielbereich zum Buffet. Die Kinder können selbst wählen, du kannst in Ruhe essen. Es gibt täglich frische, biologische Gerichte, Smoothies und sogar Kindermenüs. Ein ruhiger Dienstagvormittag dort ist pure Erholung."},
+  {city:"Zürich",emoji:"🎨",title:"Kindermuseum Zürich",sub:"Kaffee + Kreativität = perfekter Morgen",desc:"Im Kindermuseum gibt es ein kleines Café für Eltern mit ausgezeichnetem Kaffee. Die Kinder sind beschäftigt — du hast endlich eine Minute für dich.",tags:["Museum","Café","Ab 2 Jahren"],adresse:"Zürichbergstrasse 221, 8044 Zürich",full:"Das Kindermuseum Zürich ist eigentlich für Kinder gemacht — aber kluge Mamas wissen: hier gibt es auch ein hübsches Elterncafé mit Blick auf den Spielbereich. Während die Kleinen basteln, malen und staunen, trinkst du deinen Kaffee in Ruhe. Die wechselnden Ausstellungen sind kreativ und lehrreich. Eintritt günstig, Stimmung entspannt."},
+  {city:"Baden",emoji:"🛁",title:"Thermalbad Café",sub:"Kaffee mit Thermalblick",desc:"Das Café beim Thermalbad Baden hat eine ruhige Terrasse mit Blick aufs Wasser. Kinderwagen haben Platz, die Atmosphäre ist entspannt. Ideal für einen Vormittags-Ausflug.",tags:["Terrasse","Kinderwagen","Ruhig"],adresse:"Kanalstrasse 27, 5400 Baden",full:"Wenige wissen: Das Café beim Thermalbad in Baden ist einer der schönsten Plätze für einen Mama-Morgen. Die Terrasse liegt direkt an der Limmat, die Geräusche des Wassers beruhigen — Kinder und Mama gleichermassen. Es gibt hausgemachten Kuchen, warme Suppen und den besten Milchschaum der Region. Mit Kinderwagen problemlos erreichbar, gratis Parkplätze direkt daneben."},
+  {city:"Baden",emoji:"🌸",title:"Bäderquartier Spaziergang",sub:"Der schönste Kinderwagen-Weg",desc:"Der Weg durch das historische Bäderquartier ist der schönste Spaziergang mit Kinderwagen. Eben, malerisch, und am Ende wartet die Altstadt mit kleinen Cafés.",tags:["Kinderwagen","Gratis","Spaziergang"],adresse:"Bäderquartier, 5400 Baden",full:"Der Spaziergang durch das Bäderquartier Baden ist ein Geheimtipp für Mamas mit Kinderwagen. Der Weg ist eben, gepflastert und wunderschön. Du gehst durch historische Badehäuser, vorbei an der Limmat, und kannst den Weg nach Belieben verlängern oder abkürzen. Am Ende führt der Weg natürlich in die Altstadt — ideal für einen Stopp im Café Kaktus oder beim Bäcker ums Eck."},
+  {city:"Baden",emoji:"🎠",title:"Stadtpark Baden",sub:"Spielplatz + Bank + Ruhe",desc:"Der Stadtpark hat den schönsten Spielplatz der Region. Grosszügig, sicher, mit Bänken im Schatten. Du kannst dort sitzen, Kaffee trinken und die Welt vergessen.",tags:["Spielplatz","Gratis","Alle Altersgruppen"],adresse:"Stadpark, 5400 Baden",full:"Der Stadtpark Baden ist der entspannteste Ort für Mamas in der Region. Der Spielplatz wurde 2022 komplett erneuert und hat Bereiche für alle Altersgruppen — vom Kleinkind bis zum Schulkind. Die Bänke im Schatten der alten Bäume sind perfekt zum Sitzen, und wer möchte bringt sich einen Kaffee zum Mitnehmen mit. Samstags trifft man andere Mamas — eine echte kleine Community."},
+];
+
+function renderTips(){
+  document.getElementById('tips-grid').innerHTML = tips.map((t,i)=>`
+    <div class="tip-card" onclick="openTip(${i})">
+      <p class="tip-city">${t.city}</p>
+      <span class="tip-emoji">${t.emoji}</span>
+      <h3 class="tip-title">${t.title}</h3>
+      <p style="font-size:11px;color:var(--clay);margin-bottom:8px;font-style:italic">${t.sub}</p>
+      <p class="tip-desc">${t.desc}</p>
+      <div class="tip-tags">${t.tags.map(tag=>`<span class="tip-tag">${tag}</span>`).join('')}</div>
+      <span class="tip-read">Mehr lesen →</span>
+    </div>`).join('');
+}
+renderTips();
+
+function openTip(i){
+  const t = tips[i];
+  document.getElementById('tip-modal-content').innerHTML=`
+    <p class="tip-city" style="font-size:10px;letter-spacing:.25em;color:var(--clay);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px"><span>📍</span>${t.city}</p>
+    <span style="font-size:48px;display:block;margin-bottom:16px">${t.emoji}</span>
+    <h3 style="font-family:var(--serif);font-size:28px;color:var(--text);margin-bottom:4px">${t.title}</h3>
+    <p style="font-size:13px;color:var(--clay);font-style:italic;margin-bottom:20px">${t.sub}</p>
+    <p style="font-size:14px;line-height:2;color:var(--gray);margin-bottom:24px">${t.full}</p>
+    <div style="background:var(--warm);padding:16px 20px;margin-bottom:24px">
+      <p style="font-size:10px;letter-spacing:.15em;color:var(--clay);text-transform:uppercase;margin-bottom:6px">Adresse</p>
+      <p style="font-size:13px;color:var(--text)">${t.adresse}</p>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">${t.tags.map(tag=>`<span class="tip-tag">${tag}</span>`).join('')}</div>
+  `;
+  document.getElementById('overlay').classList.add('open');
+  document.getElementById('tip-modal').classList.add('open');
+}
+function closeTipModal(){
+  document.getElementById('overlay').classList.remove('open');
+  document.getElementById('tip-modal').classList.remove('open');
+}
+
+function showNotif(msg){ const n=document.getElementById('notif'); n.textContent=msg; n.classList.add('show'); setTimeout(()=>n.classList.remove('show'),2800); }
+function nlSubmit(e){ e.preventDefault(); showNotif('Merci! Du bist dabei. 🌸'); e.target.reset(); }
+function toggleMobileMenu(){ const m=document.getElementById('mob-menu'); m.style.display=m.style.display==='none'?'block':'none'; }
+
+// ── LANG ──
+const t = {
+  de:{ hero_tag:'Swiss Made · Handgemacht · Mit Liebe', h1_1:'Schmuck der', h1_2:'deine Geschichte', h1_em:'erzählt', desc:'Jedes Krälleli, jede Kette — mit Hand gefertigt in der Schweiz. Für Mütter, die Stil und Alltag verbinden.', btn1:'Kollektion entdecken', btn2:'Meine Geschichte', tips_title:'Mama-Tipps & Lieblingsorte', cart_empty:'Deine Tasche ist leer.\nEntdecke unsere Kollektion! 🌸', nl_placeholder:'Deine E-Mail-Adresse', nl_btn:'Anmelden', notif_add:'zur Tasche hinzugefügt 🌸', notif_nl:'Merci! Du bist dabei. 🌸' },
+  fr:{ hero_tag:'Swiss Made · Fait main · Avec amour', h1_1:'Des bijoux qui', h1_2:'racontent ton', h1_em:'histoire', desc:'Chaque collier, chaque bracelet — fait à la main en Suisse. Pour les mamans qui ne font pas de compromis.', btn1:'Découvrir la collection', btn2:'Mon histoire', tips_title:'Conseils & lieux préférés des mamans', cart_empty:'Ton panier est vide.\nDécouvre notre collection! 🌸', nl_placeholder:'Ton adresse e-mail', nl_btn:"M'inscrire", notif_add:'ajouté au panier 🌸', notif_nl:'Merci! Tu es des nôtres. 🌸' }
+};
+let lang='de';
+function setLang(l){
+  lang=l;
+  document.getElementById('l-de').classList.toggle('active',l==='de');
+  document.getElementById('l-fr').classList.toggle('active',l==='fr');
+  const x=t[l];
+  document.querySelector('.hero-tag').textContent=x.hero_tag;
+  document.querySelector('.hero-h1').innerHTML=`${x.h1_1}<br/>${x.h1_2}<br/><em>${x.h1_em}</em>`;
+  document.querySelector('.hero-desc').textContent=x.desc;
+  document.querySelectorAll('.hero-actions .btn-primary')[0].textContent=x.btn1;
+  document.querySelectorAll('.hero-actions .btn-outline')[0].textContent=x.btn2;
+  document.querySelector('.nl-input').placeholder=x.nl_placeholder;
+  document.querySelector('.nl-btn').textContent=x.nl_btn;
+}
+</script>
+</body>
+</html>
