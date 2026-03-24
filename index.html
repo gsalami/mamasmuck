@@ -75,7 +75,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .section-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:60px}
 .section-tag{font-size:10px;letter-spacing:.3em;color:var(--clay);text-transform:uppercase;margin-bottom:12px}
 .section-title{font-family:var(--serif);font-size:clamp(32px,4vw,48px);font-weight:400;color:var(--text)}
-.products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
 .product-card{cursor:pointer;group:true}
 .product-img{aspect-ratio:1;overflow:hidden;background:var(--warm);margin-bottom:20px;position:relative}
 .product-img img{width:100%;height:100%;object-fit:cover;transition:.5s;filter:brightness(.92)}
@@ -96,6 +96,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .story-text h2 em{color:var(--clay)}
 .story-text p{font-size:14px;line-height:2;color:var(--gray);margin-bottom:20px}
 .story-sig{font-family:var(--serif);font-size:22px;font-style:italic;color:var(--clay);margin-top:32px}
+
+/* CUSTOM SECTION */
+.custom-section{padding:100px 48px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--warm)}
+.custom-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.custom-visual{position:relative}
+.color-swatches{display:flex;gap:10px;flex-wrap:wrap}
+.swatch{width:36px;height:36px;border-radius:50%;cursor:pointer;transition:all .2s;position:relative}
+.swatch.selected::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--text);background:rgba(255,255,255,.4);border-radius:50%}
+.swatch:hover{transform:scale(1.15)}
+@media(max-width:768px){.custom-inner{grid-template-columns:1fr}.custom-visual{display:none}.custom-section{padding:60px 20px}}
 
 /* TIPS SECTION */
 .tips-section{padding:100px 48px;background:var(--warm)}
@@ -308,6 +318,56 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);background:var(
   </div>
 </section>
 
+<!-- WUNSCHFARBEN -->
+<section class="custom-section">
+  <div class="custom-inner">
+    <div class="custom-text">
+      <p class="section-tag">Personalisiert</p>
+      <h2 class="section-title">Dein <em style="color:var(--clay);font-style:italic">Wunsch-Ketteli</em></h2>
+      <p style="font-size:14px;line-height:2;color:var(--gray);margin:20px 0 32px">Du hast Lieblingsfarben? Schick sie mir — ich fädle dein ganz persönliches Ketteli oder Armbändeli. Pastell, kräftig, einfarbig oder bunt gemischt. Jede Bestellung ist ein Unikat.</p>
+      <div class="color-picker-wrap">
+        <p style="font-size:11px;letter-spacing:.15em;color:var(--gray);text-transform:uppercase;margin-bottom:16px">Wähle deine Farben:</p>
+        <div class="color-swatches" id="swatches">
+          <div class="swatch selected" data-color="Mint" style="background:#b2e0d4" title="Mint" onclick="toggleSwatch(this)"></div>
+          <div class="swatch" data-color="Rosa" style="background:#f4b8c1" title="Rosa" onclick="toggleSwatch(this)"></div>
+          <div class="swatch" data-color="Lavendel" style="background:#c9b8e8" title="Lavendel" onclick="toggleSwatch(this)"></div>
+          <div class="swatch" data-color="Cremeweiß" style="background:#f5ede0;border:1px solid #ddd" title="Cremeweiß" onclick="toggleSwatch(this)"></div>
+          <div class="swatch" data-color="Himmelblau" style="background:#aacfea" title="Himmelblau" onclick="toggleSwatch(this)"></div>
+          <div class="swatch" data-color="Lindgrün" style="background:#b8d9a0" title="Lindgrün" onclick="toggleSwatch(this)"></div>
+          <div class="swatch" data-color="Pfirsich" style="background:#f5c9a0" title="Pfirsich" onclick="toggleSwatch(this)"></div>
+          <div class="swatch" data-color="Flieder" style="background:#ddb8d8" title="Flieder" onclick="toggleSwatch(this)"></div>
+          <div class="swatch" data-color="Goldgelb" style="background:#f5de8a" title="Goldgelb" onclick="toggleSwatch(this)"></div>
+          <div class="swatch" data-color="Koralle" style="background:#f4a08a" title="Koralle" onclick="toggleSwatch(this)"></div>
+        </div>
+        <p id="selected-colors" style="font-size:12px;color:var(--clay);margin:16px 0 24px;min-height:20px">Ausgewählt: Mint</p>
+      </div>
+      <div style="display:flex;gap:12px;margin-bottom:20px">
+        <div style="flex:1">
+          <p style="font-size:11px;letter-spacing:.1em;color:var(--gray);text-transform:uppercase;margin-bottom:8px">Art</p>
+          <select id="custom-type" style="width:100%;border:1px solid var(--border);padding:12px 16px;background:transparent;font-family:var(--sans);font-size:13px;color:var(--text);outline:none">
+            <option>Ketteli (kurz)</option>
+            <option>Ketteli (lang)</option>
+            <option>Armbändeli</option>
+            <option>Matching-Set</option>
+          </select>
+        </div>
+        <div style="flex:1">
+          <p style="font-size:11px;letter-spacing:.1em;color:var(--gray);text-transform:uppercase;margin-bottom:8px">Notiz (optional)</p>
+          <input id="custom-note" type="text" placeholder="z.B. für meine Tochter..." style="width:100%;border:1px solid var(--border);padding:12px 16px;background:transparent;font-family:var(--sans);font-size:13px;color:var(--text);outline:none"/>
+        </div>
+      </div>
+      <button class="btn-primary" onclick="orderCustom()">Wunsch-Bestellung anfragen →</button>
+    </div>
+    <div class="custom-visual">
+      <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&q=85&fit=crop" alt="Bunte Perlen" style="width:100%;aspect-ratio:4/5;object-fit:cover;filter:brightness(.92)"/>
+      <div style="position:absolute;bottom:20px;right:-16px;background:white;padding:20px 24px;box-shadow:0 4px 24px rgba(0,0,0,.1)">
+        <p style="font-size:10px;letter-spacing:.15em;color:var(--gray);margin-bottom:4px">Lieferzeit</p>
+        <p style="font-family:var(--serif);font-size:16px;color:var(--text)">7–10 Werktage</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- MAMA TIPPS -->
 <section class="tips-section" id="tipps">
   <div class="tips-inner">
@@ -397,10 +457,12 @@ footer{padding:60px 48px 40px;border-top:1px solid var(--border);background:var(
 <script>
 // ── PRODUCTS ──
 const products = [
-  {id:1,name:"Mama-Krälleli",sub:"Perlen · Pastell",tag:"BESTSELLER",price:38,img:"https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=400&q=80&fit=crop",desc:"Zarte Perlenkette handgefädelt. Jede Perle ausgewählt mit Liebe. Passt zum Alltagslook wie zum Abend."},
-  {id:2,name:"Silber-Ketteli",sub:"925 Silber · Fein",tag:"NEU",price:55,img:"https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&q=80&fit=crop",desc:"Filigranes Silberketteli, handgefertigt in der Schweiz. Zeitlos, leicht, für immer."},
-  {id:3,name:"Mama-Armband",sub:"Vergoldet · Charms",tag:"HANDGEMACHT",price:45,img:"https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&q=80&fit=crop",desc:"Armband mit wählbaren Charms — Geburtsstein, Initialen, Herz. Dein ganz persönliches Stück."},
-  {id:4,name:"Mini-Set",sub:"Krälleli + Armband",tag:"GESCHENKSET",price:75,img:"https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&q=80&fit=crop",desc:"Das perfekte Geschenk für eine Mama. Kette und Armband im Set, schön verpackt in einer Leinenbox."},
+  {id:1,name:"Pastell-Ketteli",sub:"Saatperlen · Pastellmix",tag:"BESTSELLER",price:35,img:"https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=400&q=80&fit=crop",desc:"Zart handgefädelt aus kleinen Saatperlen in Pastell — Mint, Rosa, Lavendel und Cremeweiß. Jede Kette ein Unikat, genau wie du."},
+  {id:2,name:"Mint-Armbändeli",sub:"Rocailles · Mintgrün",tag:"NEU",price:22,img:"https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&q=80&fit=crop",desc:"Frisches Mintgrün aus winzigen Rocailles-Perlen, auf elastischem Band aufgefädelt. Passt zu allem, fällt nie lästig auf."},
+  {id:3,name:"Mama & Baby Set",sub:"Matching · 2 Stück",tag:"FAMILIENSET",price:52,img:"https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&q=80&fit=crop",desc:"Zwei passende Armbändeli — eines für Mama, eines für das Kind. In denselben Farben, als stilles Zeichen der Verbindung. 🌸"},
+  {id:4,name:"Wunschfarben-Ketteli",sub:"Nach Mass · Deine Farben",tag:"PERSONALISIERT",price:42,img:"https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&q=80&fit=crop",desc:"Du wählst deine Lieblingsfarben — ich fädle sie für dich. Pastell, bunt, einfarbig oder gemischt. Dein ganz persönliches Stück."},
+  {id:5,name:"Lavendel-Krälleli",sub:"Saatperlen · Lila-Töne",tag:"HANDGEMACHT",price:32,img:"https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&q=80&fit=crop",desc:"Zarte Lilatöne aus Saatperlen — von Lavendel bis Flieder. Kurze Kette, leicht und feminin."},
+  {id:6,name:"Geschenkset",sub:"Kette + Armband · Box",tag:"GESCHENK 🎁",price:68,img:"https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=400&q=80&fit=crop",desc:"Kette und passendes Armband, liebevoll verpackt in einer Leinenbox. Das perfekte Geschenk für eine Mama die du liebst."},
 ];
 
 let cart = [];
@@ -495,6 +557,28 @@ function openTip(i){
 function closeTipModal(){
   document.getElementById('overlay').classList.remove('open');
   document.getElementById('tip-modal').classList.remove('open');
+}
+
+// ── WUNSCHFARBEN ──
+let selectedColors = ['Mint'];
+function toggleSwatch(el){
+  const color = el.dataset.color;
+  if(el.classList.contains('selected')){
+    if(selectedColors.length===1){ showNotif('Mindestens eine Farbe wählen 🌸'); return; }
+    el.classList.remove('selected');
+    selectedColors = selectedColors.filter(c=>c!==color);
+  } else {
+    el.classList.add('selected');
+    selectedColors.push(color);
+  }
+  document.getElementById('selected-colors').textContent = 'Ausgewählt: ' + selectedColors.join(', ');
+}
+function orderCustom(){
+  const type = document.getElementById('custom-type').value;
+  const note = document.getElementById('custom-note').value;
+  const colors = selectedColors.join(', ');
+  addToCart(4); // Wunschfarben = Produkt 4
+  showNotif(`${type} in ${colors} — Anfrage eingegangen! 🌸`);
 }
 
 function showNotif(msg){ const n=document.getElementById('notif'); n.textContent=msg; n.classList.add('show'); setTimeout(()=>n.classList.remove('show'),2800); }
